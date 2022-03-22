@@ -1,0 +1,38 @@
+.root {
+  color: var(--color-black, #333);
+  font-size: var(--font-small-size);
+  line-height: var(--font-small-line-height);
+  padding: 2rem 0;
+}
+
+.items {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0 0 3rem;
+  padding: 0;
+}
+
+.item {
+  @nest & > a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 1.5rem 0.5rem;
+    @nest &[data-is-active='true'] {
+      font-weight: bold;
+    }
+  }
+}
+
+.text {
+  text-align: center;
+
+  @nest & p {
+    margin: 1rem 0;
+  }
+
+  @nest & a {
+    color: inherit;
+  }
+}
