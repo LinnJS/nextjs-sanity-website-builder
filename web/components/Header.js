@@ -22,7 +22,9 @@ class Header extends Component {
     navItems: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
-        slug: PropTypes.arrayOf(PropTypes.string),
+        slug: PropTypes.shape({
+          current: PropTypes.string
+        }),
       })
     ),
     logo: PropTypes.shape({
