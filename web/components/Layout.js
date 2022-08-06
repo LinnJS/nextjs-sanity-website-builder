@@ -1,21 +1,21 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Head from 'next/head'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Head from 'next/head';
 
-import {LogoJsonLd} from 'next-seo'
-import Header from './Header'
-import Footer from './Footer'
+import { LogoJsonLd } from 'next-seo';
+import Header from './Header';
+import Footer from './Footer';
 
 const Layout = (props) => {
-  const {config, children} = props
+  const { config, children } = props;
 
   if (!config) {
-    console.error('Missing config')
-    return <div>Missing config</div>
+    console.error('Missing config');
+    return <div>Missing config</div>;
   }
 
-  const {title, mainNavigation, footerNavigation, footerText, logo, url} = config
-  const logoUrl = logo && logo.asset && logo.asset.url
+  const { title, mainNavigation, footerNavigation, footerText, logo, url } = config;
+  const logoUrl = logo && logo.asset && logo.asset.url;
 
   return (
     <>
@@ -29,8 +29,8 @@ const Layout = (props) => {
         {logoUrl && url && <LogoJsonLd url={url} logo={logoUrl} />}
       </div>
     </>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.arrayOf(PropTypes.node),
@@ -46,6 +46,6 @@ Layout.propTypes = {
     }),
     url: PropTypes.string,
   }),
-}
+};
 
-export default Layout
+export default Layout;

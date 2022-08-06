@@ -1,40 +1,40 @@
-import React, {Fragment} from 'react'
-import PropTypes from 'prop-types'
-import * as SectionComponents from './sections'
-import capitalizeString from '../utils/capitalizeString'
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import * as SectionComponents from './sections';
+import capitalizeString from '../utils/capitalizeString';
 
 function resolveSections(section) {
   // eslint-disable-next-line import/namespace
-  const Section = SectionComponents[capitalizeString(section._type)]
+  const Section = SectionComponents[capitalizeString(section._type)];
 
   if (Section) {
-    return Section
+    return Section;
   }
 
-  console.error('Cant find section', section) // eslint-disable-line no-console
-  return null
+  console.error('Cant find section', section); // eslint-disable-line no-console
+  return null;
 }
 
 const RenderSections = (props) => {
-  const {sections} = props
+  const { sections } = props;
 
   if (!sections) {
-    console.error('Missing section')
-    return <div>Missing sections</div>
+    console.error('Missing section');
+    return <div>Missing sections</div>;
   }
 
   return (
     <Fragment>
       {sections.map((section) => {
-        const SectionComponent = resolveSections(section)
+        const SectionComponent = resolveSections(section);
         if (!SectionComponent) {
-          return <div>Missing section {section._type}</div>
+          return <div>Missing section {section._type}</div>;
         }
-        return <SectionComponent {...section} key={section._key} />
+        return <SectionComponent {...section} key={section._key} />;
       })}
     </Fragment>
-  )
-}
+  );
+};
 
 RenderSections.propTypes = {
   sections: PropTypes.arrayOf(
@@ -44,6 +44,6 @@ RenderSections.propTypes = {
       section: PropTypes.instanceOf(PropTypes.object),
     })
   ),
-}
+};
 
-export default RenderSections
+export default RenderSections;

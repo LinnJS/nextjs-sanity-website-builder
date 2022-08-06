@@ -1,17 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const EmbedHTML = ({node}) => {
-  const {html} = node
+const EmbedHTML = ({ node }) => {
+  const { html } = node;
   if (!html) {
-    return undefined
+    return undefined;
   }
-  return <div dangerouslySetInnerHTML={{__html: html}} />
-}
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+};
 
 EmbedHTML.propTypes = {
   node: PropTypes.shape({
     html: PropTypes.string,
   }),
-}
-export default EmbedHTML
+};
+export default EmbedHTML;

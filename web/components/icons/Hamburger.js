@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const strokeStyle = {vectorEffect: 'non-scaling-stroke'}
+const strokeStyle = { vectorEffect: 'non-scaling-stroke' };
 
 const HamburgerIcon = (props) => {
   return (
@@ -17,7 +17,7 @@ const HamburgerIcon = (props) => {
       <path d="M5 12.5H20" stroke="currentColor" style={strokeStyle} />
       <path d="M5 17.5H20" stroke="currentColor" style={strokeStyle} />
     </svg>
-  )
-}
+  );
+};
 
-export default HamburgerIcon
+export default HamburgerIcon;

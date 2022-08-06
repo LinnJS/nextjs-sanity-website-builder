@@ -1,18 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import imageUrlBuilder from '@sanity/image-url'
-import styles from './ImageSection.module.css'
-import client from '../../client'
-import SimpleBlockContent from '../SimpleBlockContent'
-import Cta from '../Cta'
+import React from 'react';
+import PropTypes from 'prop-types';
+import imageUrlBuilder from '@sanity/image-url';
+import styles from './ImageSection.module.css';
+import client from '../../client';
+import SimpleBlockContent from '../SimpleBlockContent';
+import Cta from '../Cta';
 
-const builder = imageUrlBuilder(client)
+const builder = imageUrlBuilder(client);
 
 const ImageSection = (props) => {
-  const {heading, label, text, image, cta} = props
+  const { heading, label, text, image, cta } = props;
 
   if (!image) {
-    return null
+    return null;
   }
 
   return (
@@ -31,8 +31,8 @@ const ImageSection = (props) => {
         </figcaption>
       </figure>
     </div>
-  )
-}
+  );
+};
 
 ImageSection.propTypes = {
   heading: PropTypes.string,
@@ -46,6 +46,6 @@ ImageSection.propTypes = {
   backgroundImage: PropTypes.string,
   tagline: PropTypes.string,
   cta: PropTypes.object,
-}
+};
 
-export default ImageSection
+export default ImageSection;
