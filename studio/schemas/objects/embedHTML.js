@@ -14,8 +14,7 @@ export default {
       name: 'html',
       title: 'HTML',
       type: 'text',
-      description:
-        'You usually want to avoid storing freeform HTML, but for embed codes it can be useful.',
+      description: 'You usually want to avoid storing freeform HTML, but for embed codes it can be useful.',
       options: {
         language: 'html',
       },

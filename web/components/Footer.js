@@ -6,7 +6,7 @@ import styles from './Footer.module.css'
 import SimpleBlockContent from './SimpleBlockContent'
 import {getPathFromSlug, slugParamToPath} from '../utils/urls'
 
-function Footer(props) {
+const Footer = (props) => {
   const {navItems, text, router} = props
   return (
     <div className={styles.root}>
@@ -39,7 +39,7 @@ Footer.propTypes = {
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       slug: PropTypes.shape({
-        current: PropTypes.string
+        current: PropTypes.string,
       }),
     })
   ),

@@ -77,15 +77,7 @@ export const getServerSideProps = async ({params}) => {
 const builder = imageUrlBuilder(client)
 
 const LandingPage = (props) => {
-  const {
-    title = 'Missing title',
-    description,
-    disallowRobots,
-    openGraphImage,
-    content = [],
-    config = {},
-    slug,
-  } = props
+  const {title = 'Missing title', description, disallowRobots, openGraphImage, content = [], config = {}, slug} = props
 
   const openGraphImages = openGraphImage
     ? [

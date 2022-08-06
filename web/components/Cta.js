@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Link from 'next/link'
 import styles from './Cta.module.css'
 
-function cta(props) {
+const cta = (props) => {
   const {title, route, link} = props
 
   if (route && route.slug && route.slug.current) {

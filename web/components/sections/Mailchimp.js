@@ -3,7 +3,7 @@ import React from 'react'
 import MailchimpForm from 'react-mailchimp-form'
 import styles from './Mailchimp.module.css'
 
-export default function Mailchimp(props) {
+const Mailchimp = (props) => {
   const {heading, subtitle, actionUrl} = props
 
   return (
@@ -53,6 +53,8 @@ export default function Mailchimp(props) {
     </section>
   )
 }
+
+export default Mailchimp
 
 Mailchimp.propTypes = {
   heading: PropTypes.string,

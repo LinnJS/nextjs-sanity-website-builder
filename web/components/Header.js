@@ -23,7 +23,7 @@ class Header extends Component {
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         slug: PropTypes.shape({
-          current: PropTypes.string
+          current: PropTypes.string,
         }),
       })
     ),
@@ -79,27 +79,30 @@ class Header extends Component {
             <a title={title}>{this.renderLogo(logo)}</a>
           </Link>
         </h1>
-        <nav className={styles.nav}>
-          <ul className={styles.navItems}>
-            {navItems &&
-              navItems.map((item) => {
-                const {slug, title, _id} = item
-                const isActive = slugParamToPath(router.query.slug) === slug.current
-                return (
-                  <li key={_id} className={styles.navItem}>
-                    <Link href={getPathFromSlug(slug.current)}>
-                      <a data-is-active={isActive ? 'true' : 'false'} aria-current={isActive}>
-                        {title}
-                      </a>
-                    </Link>
-                  </li>
-                )
-              })}
-          </ul>
-          <button className={styles.showNavButton} onClick={this.handleMenuToggle}>
-            <HamburgerIcon className={styles.hamburgerIcon} />
-          </button>
-        </nav>
+
+        <section className="bg-red-500">
+          <nav className={styles.nav}>
+            <ul className={styles.navItems}>
+              {navItems &&
+                navItems.map((item) => {
+                  const {slug, title, _id} = item
+                  const isActive = slugParamToPath(router.query.slug) === slug.current
+                  return (
+                    <li key={_id} className={styles.navItem}>
+                      <Link href={getPathFromSlug(slug.current)}>
+                        <a data-is-active={isActive ? 'true' : 'false'} aria-current={isActive}>
+                          {title}
+                        </a>
+                      </Link>
+                    </li>
+                  )
+                })}
+            </ul>
+            <button className={styles.showNavButton} onClick={this.handleMenuToggle}>
+              <HamburgerIcon className={styles.hamburgerIcon} />
+            </button>
+          </nav>
+        </section>
       </div>
     )
   }

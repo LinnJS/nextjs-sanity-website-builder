@@ -8,7 +8,7 @@ import Cta from '../Cta'
 
 const builder = imageUrlBuilder(client)
 
-function ImageSection(props) {
+const ImageSection = (props) => {
   const {heading, label, text, image, cta} = props
 
   if (!image) {
@@ -18,11 +18,7 @@ function ImageSection(props) {
   return (
     <div className={styles.root}>
       <figure className={styles.content}>
-        <img
-          src={builder.image(image).auto('format').width(2000).url()}
-          className={styles.image}
-          alt={heading}
-        />
+        <img src={builder.image(image).auto('format').width(2000).url()} className={styles.image} alt={heading} />
         <figcaption>
           <div className={styles.caption}>
             <div className={styles.captionBox}>

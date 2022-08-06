@@ -27,19 +27,14 @@ export default {
     },
     {
       title: 'Site language',
-      description:
-        'Should be a valid bcp47 language code like en, en-US, no or nb-NO',
+      description: 'Should be a valid bcp47 language code like en, en-US, no or nb-NO',
       name: 'lang',
       type: 'string',
-      validation: Rule =>
-        Rule.custom(lang =>
-          bcp47.parse(lang) ? true : 'Please use a valid bcp47 code'
-        ),
+      validation: (Rule) => Rule.custom((lang) => (bcp47.parse(lang) ? true : 'Please use a valid bcp47 code')),
     },
     {
       title: 'Brand logo',
-      description:
-        'Best choice is to use an SVG where the color are set with currentColor',
+      description: 'Best choice is to use an SVG where the color are set with currentColor',
       name: 'logo',
       type: 'image',
       fields: [
@@ -58,7 +53,7 @@ export default {
       title: 'Main navigation',
       name: 'mainNavigation',
       description: 'Select pages for the top menu',
-      validation: Rule => [
+      validation: (Rule) => [
         Rule.max(5).warning('Are you sure you want more than 5 items?'),
         Rule.unique().error('You have duplicate menu items'),
       ],
@@ -74,7 +69,7 @@ export default {
       title: 'Footer navigation items',
       name: 'footerNavigation',
       type: 'array',
-      validation: Rule => [
+      validation: (Rule) => [
         Rule.max(10).warning('Are you sure you want more than 10 items?'),
         Rule.unique().error('You have duplicate menu items'),
       ],

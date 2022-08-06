@@ -15,7 +15,7 @@ function resolveSections(section) {
   return null
 }
 
-function RenderSections(props) {
+const RenderSections = (props) => {
   const {sections} = props
 
   if (!sections) {

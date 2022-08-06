@@ -10,6 +10,7 @@
     "format": "lerna run format",
     "graphql-deploy": "lerna run graphql-deploy",
     "lint": "lerna run lint",
+    "lint:fix": "lerna run lint:fix",
     "postinstall": "lerna bootstrap",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

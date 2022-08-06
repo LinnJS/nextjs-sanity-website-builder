@@ -10,7 +10,7 @@ function urlFor(source) {
   return imageUrlBuilder(client).image(source)
 }
 
-function Hero(props) {
+const Hero = (props) => {
   const {heading, backgroundImage, tagline, ctas} = props
 
   const style = backgroundImage

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import SimpleBlockContent from '../SimpleBlockContent'
 import styles from './TextSection.module.css'
 
-function TextSection(props) {
+const TextSection = (props) => {
   const {heading, label, text} = props
 
   return (

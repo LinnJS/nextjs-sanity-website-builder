@@ -4,7 +4,7 @@ import {PortableText} from '@portabletext/react'
 import EmbedHTML from './EmbedHTML'
 import Figure from './Figure'
 
-function SimpleBlockContent(props) {
+const SimpleBlockContent = (props) => {
   const {blocks} = props
 
   if (!blocks) {

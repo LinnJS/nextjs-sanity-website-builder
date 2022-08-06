@@ -2,11 +2,7 @@ export default {
   title: 'Call to action',
   name: 'cta',
   type: 'object',
-  validation: Rule =>
-    Rule.custom(
-      (fields = {}) =>
-        !fields.route || !fields.link || 'Only one link type is allowed'
-    ),
+  validation: (Rule) => Rule.custom((fields = {}) => !fields.route || !fields.link || 'Only one link type is allowed'),
   fieldsets: [
     {
       title: 'Link',
@@ -42,11 +38,7 @@ export default {
       link: 'link',
     },
     prepare({ title, routeTitle = '', slug, link }) {
-      const subtitleExtra = slug
-        ? `Slug:/${slug}/`
-        : link
-        ? `External link: ${link}`
-        : 'Not set';
+      const subtitleExtra = slug ? `Slug:/${slug}/` : link ? `External link: ${link}` : 'Not set';
       return {
         title: `${title}`,
         subtitle: `${routeTitle} ${subtitleExtra}`,
