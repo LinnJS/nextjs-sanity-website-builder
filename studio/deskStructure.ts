@@ -2,7 +2,8 @@ import S from '@sanity/desk-tool/structure-builder';
 
 // We filter document types defined in structure to prevent
 // them from being listed twice
-const hiddenDocTypes = (listItem) => !['page', 'route', 'site-config'].includes(listItem.getId());
+const hiddenDocTypes = (listItem: { getId: () => any }): boolean =>
+  !['page', 'route', 'site-config'].includes(listItem.getId());
 
 export default () =>
   S.list()
