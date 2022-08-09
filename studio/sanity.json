@@ -27,15 +27,19 @@
   "parts": [
     {
       "name": "part:@sanity/base/schema",
-      "path": "./schemas/schema.js"
+      "path": "./schemas/schema"
     },
     {
       "implements": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure.js"
+      "path": "./sanity/deskStructure"
     },
     {
       "implements": "part:@sanity/dashboard/config",
-      "path": "./dashboardConfig.js"
+      "path": "./sanity/dashboardConfig"
+    },
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "./sanity/resolveDocumentActions"
     }
   ]
 }

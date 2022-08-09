@@ -26,12 +26,13 @@ module.exports = {
   rules: {
     'jsx-a11y/anchor-is-valid': [1],
     '@next/next/no-html-link-for-pages': 'off',
+    '@next/next/no-img-element': 'off',
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error', {ignoreRestSiblings: true}],
+    '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
     '@typescript-eslint/no-var-requires': 'off',
-    'no-console': ['warn', {allow: ['warn', 'error', 'debug', 'table']}],
+    'no-console': ['warn', { allow: ['warn', 'error', 'debug', 'table'] }],
     '@typescript-eslint/ban-ts-comment': 1,
-    'prettier/prettier': ['error', {singleQuote: true, jsxSingleQuote: false, printWidth: 120, parser: 'babel-ts'}],
+    'prettier/prettier': ['error', { singleQuote: true, jsxSingleQuote: false, printWidth: 120, parser: 'babel-ts' }],
     'import/no-anonymous-default-export': 'off',
     'rest-spread-spacing': 'warn',
     'prefer-rest-params': 'warn',
@@ -52,9 +53,9 @@ module.exports = {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test|jest).[jt]s?(x)'],
       extends: ['plugin:testing-library/react', 'plugin:jest/recommended'],
       rules: {
-        'import/no-extraneous-dependencies': ['off', {devDependencies: ['**/?(*.)+(spec|test|jest).[jt]s?(x)']}],
+        'import/no-extraneous-dependencies': ['off', { devDependencies: ['**/?(*.)+(spec|test|jest).[jt]s?(x)'] }],
       },
     },
   ],
   ignorePatterns: ['node_modules', 'public', 'styles', '.next', 'coverage', 'dist', '.turbo'],
-}
+};
