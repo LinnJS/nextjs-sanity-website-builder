@@ -27,7 +27,7 @@
     "outDir": "./dist"
   },
   "compileOnSave": true,
-  "include": ["**/*.ts", "**/*.tsx", "./node_modules/@sanity/base/types/**/*.ts", "./node_modules/@sanity/base/types/**/*.tsx", "./@types/index"],
+  "include": ["**/*.ts", "**/*.tsx", "./node_modules/@sanity/base/types/**/*.ts", "./@types/index"],
   "exclude": ["node_modules"]
 
 }

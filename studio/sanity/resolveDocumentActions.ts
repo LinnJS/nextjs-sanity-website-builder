@@ -4,7 +4,6 @@ import {
   UnpublishAction,
   DeleteAction,
   DuplicateAction,
-  // @ts-ignore
 } from 'part:@sanity/base/document-actions';
 
 interface DocumentActionsProps {
