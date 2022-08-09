@@ -1,7 +1,7 @@
 import React, { Fragment, ReactElement } from 'react';
 import * as SectionComponents from './sections';
 import capitalizeString from '../utils/capitalizeString';
-import MailChimp from '../components/sections/MailChimp';
+import Mailchimp from './sections/Mailchimp';
 
 type SectionProps = {
   _type: string;
@@ -19,7 +19,7 @@ function resolveSections(section: SectionProps) {
   const Section = SectionComponents[capitalizeString(section._type)];
 
   if (section._type === 'mailchimp') {
-    return MailChimp;
+    return Mailchimp;
   }
 
   if (Section) {
