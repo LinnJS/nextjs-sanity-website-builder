@@ -1,12 +1,45 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Head from 'next/head';
-
 import { LogoJsonLd } from 'next-seo';
+
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = (props) => {
+interface LayoutProps {
+  children: React.ReactNode;
+  config: {
+    title: string;
+    mainNavigation: {
+      _id: string;
+      title: string;
+      slug: {
+        current: string;
+      };
+    }[];
+    footerNavigation: {
+      _id: string;
+      title: string;
+      slug: {
+        current: string;
+      };
+    }[];
+    footerText: {
+      title: string;
+      slug: string;
+    }[];
+    logo: {
+      logo: string;
+      title: string;
+      asset: {
+        url: string;
+        extension?: string;
+      };
+    };
+    url: string;
+  };
+}
+
+const Layout = (props: LayoutProps) => {
   const { config, children } = props;
 
   if (!config) {
@@ -30,22 +63,6 @@ const Layout = (props) => {
       </div>
     </>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.node),
-  config: PropTypes.shape({
-    title: PropTypes.string,
-    mainNavigation: PropTypes.arrayOf(PropTypes.object),
-    footerNavigation: PropTypes.arrayOf(PropTypes.object),
-    footerText: PropTypes.arrayOf(PropTypes.object),
-    logo: PropTypes.shape({
-      asset: PropTypes.shape({
-        url: PropTypes.string,
-      }),
-    }),
-    url: PropTypes.string,
-  }),
 };
 
 export default Layout;

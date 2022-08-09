@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { withRouter } from 'next/router';
 import SVG from 'react-inlinesvg';
+import { withRouter, NextRouter } from 'next/router';
+
 import styles from './Header.module.css';
 import HamburgerIcon from './icons/Hamburger';
 import { getPathFromSlug, slugParamToPath } from '../utils/urls';
@@ -16,15 +16,12 @@ type LogoProps = {
   };
 };
 
-interface HeaderProps {
-  title: string;
-  router: {
-    pathname: string;
-    events: any;
-    query: {
-      slug?: string;
-    };
-  };
+interface WithRouterProps {
+  router: NextRouter;
+}
+
+interface HeaderProps extends WithRouterProps {
+  title?: string;
   navItems: {
     _id: string;
     title: string;
@@ -37,23 +34,6 @@ interface HeaderProps {
 
 class Header extends Component<HeaderProps> {
   state = { showNav: false };
-
-  static propTypes = {
-    navItems: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        slug: PropTypes.shape({
-          current: PropTypes.string,
-        }),
-      })
-    ),
-    logo: PropTypes.shape({
-      asset: PropTypes.shape({
-        url: PropTypes.string,
-      }),
-      logo: PropTypes.string,
-    }),
-  };
 
   componentDidMount() {
     const { router } = this.props;
@@ -99,34 +79,30 @@ class Header extends Component<HeaderProps> {
             <a title={title}>{this.renderLogo(logo)}</a>
           </Link>
         </h1>
-
-        <section className="bg-red-500">
-          <nav className={styles.nav}>
-            <ul className={styles.navItems}>
-              {navItems &&
-                navItems.map((item) => {
-                  const { slug, title, _id } = item;
-                  const isActive = slugParamToPath(router.query.slug) === slug.current;
-                  return (
-                    <li key={_id} className={styles.navItem}>
-                      <Link href={getPathFromSlug(slug.current)}>
-                        <a data-is-active={isActive ? 'true' : 'false'} aria-current={isActive}>
-                          {title}
-                        </a>
-                      </Link>
-                    </li>
-                  );
-                })}
-            </ul>
-            <button className={styles.showNavButton} onClick={this.handleMenuToggle}>
-              <HamburgerIcon className={styles.hamburgerIcon} />
-            </button>
-          </nav>
-        </section>
+        <nav className={styles.nav}>
+          <ul className={styles.navItems}>
+            {navItems &&
+              navItems.map((item) => {
+                const { slug, title, _id } = item;
+                const isActive = slugParamToPath(router.query.slug) === slug.current;
+                return (
+                  <li key={_id} className={styles.navItem}>
+                    <Link href={getPathFromSlug(slug.current)}>
+                      <a data-is-active={isActive ? 'true' : 'false'} aria-current={isActive}>
+                        {title}
+                      </a>
+                    </Link>
+                  </li>
+                );
+              })}
+          </ul>
+          <button className={styles.showNavButton} onClick={this.handleMenuToggle}>
+            <HamburgerIcon className={styles.hamburgerIcon} />
+          </button>
+        </nav>
       </div>
     );
   }
 }
 
-// @ts-ignore
 export default withRouter(Header);

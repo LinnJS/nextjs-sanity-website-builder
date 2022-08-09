@@ -1,20 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { withRouter } from 'next/router';
+import { withRouter, NextRouter } from 'next/router';
+
 import styles from './Footer.module.css';
 import SimpleBlockContent from './SimpleBlockContent';
 import { getPathFromSlug, slugParamToPath } from '../utils/urls';
 
-interface FooterProps {
+interface WithRouterProps {
+  router: NextRouter;
+}
+
+interface FooterProps extends WithRouterProps {
   text: any;
-  router: {
-    pathname: string;
-    events: any;
-    query: {
-      slug?: string;
-    };
-  };
   navItems: {
     _id: string;
     title: string;
@@ -24,8 +21,7 @@ interface FooterProps {
   }[];
 }
 
-const Footer = (props: FooterProps) => {
-  const { navItems, text, router } = props;
+const Footer = ({ navItems, text, router }: FooterProps) => {
   return (
     <div className={styles.root}>
       <nav>
@@ -52,23 +48,4 @@ const Footer = (props: FooterProps) => {
   );
 };
 
-Footer.propTypes = {
-  navItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      slug: PropTypes.shape({
-        current: PropTypes.string,
-      }),
-    })
-  ),
-  text: PropTypes.arrayOf(PropTypes.object),
-  router: PropTypes.shape({
-    pathname: PropTypes.string,
-    query: PropTypes.shape({
-      slug: PropTypes.array,
-    }),
-  }),
-};
-
-// @ts-ignore
 export default withRouter(Footer);
