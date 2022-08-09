@@ -6,7 +6,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "incremental": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "noEmit": true,

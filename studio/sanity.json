@@ -36,6 +36,10 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "./sanity/dashboardConfig"
+    },
+    {
+      "implements": "part:@sanity/base/document-actions/resolver",
+      "path": "./sanity/resolveDocumentActions"
     }
   ]
 }
