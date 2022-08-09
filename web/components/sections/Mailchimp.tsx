@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types';
-import React from 'react';
 // @ts-ignore
 import MailchimpForm from 'react-mailchimp-form';
+
 import styles from './MailChimp.module.css';
 
 interface MailChimpProps {
@@ -60,9 +59,3 @@ const MailChimp = ({ heading, subtitle, actionUrl }: MailChimpProps) => {
 };
 
 export default MailChimp;
-
-MailChimp.propTypes = {
-  heading: PropTypes.string,
-  subtitle: PropTypes.string,
-  actionUrl: PropTypes.string,
-};
