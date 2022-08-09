@@ -2,41 +2,13 @@ import React from 'react';
 import Head from 'next/head';
 import { LogoJsonLd } from 'next-seo';
 
+import type { ConfigProps } from '../pages/_app';
 import Header from './Header';
 import Footer from './Footer';
 
 interface LayoutProps {
   children: React.ReactNode;
-  config: {
-    title: string;
-    mainNavigation: {
-      _id: string;
-      title: string;
-      slug: {
-        current: string;
-      };
-    }[];
-    footerNavigation: {
-      _id: string;
-      title: string;
-      slug: {
-        current: string;
-      };
-    }[];
-    footerText: {
-      title: string;
-      slug: string;
-    }[];
-    logo: {
-      logo: string;
-      title: string;
-      asset: {
-        url: string;
-        extension?: string;
-      };
-    };
-    url: string;
-  };
+  config: ConfigProps;
 }
 
 const Layout = (props: LayoutProps) => {

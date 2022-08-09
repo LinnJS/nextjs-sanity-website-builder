@@ -1,13 +1,13 @@
 import imageUrlBuilder from '@sanity/image-url';
 import groq from 'groq';
 import { NextSeo } from 'next-seo';
-import PropTypes from 'prop-types';
-import React from 'react';
+import { GetServerSideProps } from 'next';
 
 import client from '../client';
 import Layout from '../components/Layout';
 import RenderSections from '../components/RenderSections';
 import { getSlugVariations, slugParamToPath } from '../utils/urls';
+import type { ConfigProps } from './_app';
 
 const pageFragment = groq`
 ...,
@@ -30,7 +30,14 @@ content[] {
  * for every page requested - /, /about, /contact, etc..
  * From the received params.slug, we're able to query Sanity for the route coresponding to the currently requested path.
  */
-export const getServerSideProps = async ({ params }) => {
+
+interface ServerProps extends GetServerSideProps {
+  params: {
+    slug: string;
+  };
+}
+
+export const getServerSideProps = async ({ params }: ServerProps) => {
   const slug = slugParamToPath(params?.slug);
 
   let data;
@@ -63,7 +70,7 @@ export const getServerSideProps = async ({ params }) => {
       .then((res) => (res?.page ? { ...res.page, slug } : undefined));
   }
 
-  if (!data?._type === 'page') {
+  if (data?._type !== 'page') {
     return {
       notFound: true,
     };
@@ -76,17 +83,25 @@ export const getServerSideProps = async ({ params }) => {
 
 const builder = imageUrlBuilder(client);
 
-const LandingPage = (props) => {
-  const {
-    title = 'Missing title',
-    description,
-    disallowRobots,
-    openGraphImage,
-    content = [],
-    config = {},
-    slug,
-  } = props;
+interface LandingPageProps {
+  title?: string;
+  description: string;
+  slug: string;
+  disallowRobots: boolean;
+  openGraphImage: any;
+  content?: any[];
+  config: ConfigProps;
+}
 
+const LandingPage = ({
+  title = 'Missing title',
+  description,
+  disallowRobots,
+  openGraphImage,
+  content = [],
+  config,
+  slug,
+}: LandingPageProps) => {
   const openGraphImages = openGraphImage
     ? [
         {
@@ -127,16 +142,6 @@ const LandingPage = (props) => {
       {content && <RenderSections sections={content} />}
     </Layout>
   );
-};
-
-LandingPage.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  slug: PropTypes.string,
-  disallowRobots: PropTypes.bool,
-  openGraphImage: PropTypes.any,
-  content: PropTypes.any,
-  config: PropTypes.any,
 };
 
 export default LandingPage;
