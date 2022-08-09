@@ -31,11 +31,11 @@
     },
     {
       "implements": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure"
+      "path": "./sanity/deskStructure"
     },
     {
       "implements": "part:@sanity/dashboard/config",
-      "path": "./dashboardConfig"
+      "path": "./sanity/dashboardConfig"
     }
   ]
 }
