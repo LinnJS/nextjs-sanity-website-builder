@@ -1,4 +1,4 @@
-import { parse } from 'bcp-47';
+import bcp47 from 'bcp47';
 
 import { RuleType } from '../../@types';
 
@@ -30,7 +30,8 @@ export default {
       description: 'Should be a valid bcp47 language code like en, en-US, no or nb-NO',
       name: 'lang',
       type: 'string',
-      validation: (Rule: RuleType) => Rule.custom((lang) => (parse(lang) ? true : 'Please use a valid bcp47 code')),
+      validation: (Rule: RuleType) =>
+        Rule.custom((lang) => (bcp47.parse(lang) ? true : 'Please use a valid bcp47 code')),
     },
     {
       title: 'Brand logo',
