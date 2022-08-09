@@ -1,11 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import styles from './Cta.module.css';
 
-const cta = (props) => {
-  const { title, route, link } = props;
+interface CtaProps {
+  title: string;
+  link: string;
+  route: {
+    slug: {
+      current: string;
+    };
+  };
+}
 
+const cta = ({ title, route, link }: CtaProps) => {
   if (route && route.slug && route.slug.current) {
     return (
       <Link
@@ -29,16 +36,6 @@ const cta = (props) => {
   }
 
   return <a className={styles.button}>{title}</a>;
-};
-
-cta.propTypes = {
-  title: PropTypes.string.isRequired,
-  route: PropTypes.shape({
-    slug: PropTypes.shape({
-      current: PropTypes.string,
-    }),
-  }),
-  link: PropTypes.string,
 };
 
 export default cta;

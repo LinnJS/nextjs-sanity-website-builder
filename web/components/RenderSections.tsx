@@ -1,10 +1,20 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment, ReactElement } from 'react';
 import * as SectionComponents from './sections';
 import capitalizeString from '../utils/capitalizeString';
 
-function resolveSections(section) {
-  // eslint-disable-next-line import/namespace
+type SectionProps = {
+  _type: string;
+  _key: string;
+  _id: string;
+  section: ReactElement;
+};
+
+interface RenderSectionsProps {
+  sections: SectionProps[];
+}
+
+function resolveSections(section: SectionProps) {
+  // @ts-ignore
   const Section = SectionComponents[capitalizeString(section._type)];
 
   if (Section) {
@@ -15,9 +25,7 @@ function resolveSections(section) {
   return null;
 }
 
-const RenderSections = (props) => {
-  const { sections } = props;
-
+const RenderSections = ({ sections }: RenderSectionsProps) => {
   if (!sections) {
     console.error('Missing section');
     return <div>Missing sections</div>;
@@ -34,16 +42,6 @@ const RenderSections = (props) => {
       })}
     </Fragment>
   );
-};
-
-RenderSections.propTypes = {
-  sections: PropTypes.arrayOf(
-    PropTypes.shape({
-      _type: PropTypes.string,
-      _key: PropTypes.string,
-      section: PropTypes.instanceOf(PropTypes.object),
-    })
-  ),
 };
 
 export default RenderSections;

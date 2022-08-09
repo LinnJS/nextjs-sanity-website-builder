@@ -1,7 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const EmbedHTML = ({ node }) => {
+interface EmbedHTMLProps {
+  node: {
+    html: string;
+  };
+}
+const EmbedHTML = ({ node }: EmbedHTMLProps) => {
   const { html } = node;
   if (!html) {
     return undefined;
@@ -9,9 +13,4 @@ const EmbedHTML = ({ node }) => {
   return <div dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
-EmbedHTML.propTypes = {
-  node: PropTypes.shape({
-    html: PropTypes.string,
-  }),
-};
 export default EmbedHTML;

@@ -1,12 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import imageUrlBuilder from '@sanity/image-url';
+
 import styles from './Figure.module.css';
 import client from '../client';
 
 const builder = imageUrlBuilder(client);
 
-const Figure = ({ node }) => {
+interface FigureProps {
+  node: {
+    alt: string;
+    caption: string;
+    asset: {
+      _ref: string;
+    };
+  };
+}
+
+const Figure = ({ node }: FigureProps) => {
   const { alt, caption, asset } = node;
   if (!asset) {
     return undefined;
@@ -27,13 +37,4 @@ const Figure = ({ node }) => {
   );
 };
 
-Figure.propTypes = {
-  node: PropTypes.shape({
-    alt: PropTypes.string,
-    caption: PropTypes.string,
-    asset: PropTypes.shape({
-      _ref: PropTypes.string,
-    }),
-  }),
-};
 export default Figure;

@@ -1,12 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { PortableText } from '@portabletext/react';
 import EmbedHTML from './EmbedHTML';
 import Figure from './Figure';
 
-const SimpleBlockContent = (props) => {
-  const { blocks } = props;
+interface SimpleBlockContentProps {
+  blocks: any[];
+}
 
+const SimpleBlockContent = ({ blocks }: SimpleBlockContentProps) => {
   if (!blocks) {
     console.error('Missing blocks');
     return null;
@@ -17,16 +18,14 @@ const SimpleBlockContent = (props) => {
       value={blocks}
       components={{
         types: {
+          // @ts-ignore
           embedHTML: EmbedHTML,
+          // @ts-ignore
           figure: Figure,
         },
       }}
     />
   );
-};
-
-SimpleBlockContent.propTypes = {
-  blocks: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default SimpleBlockContent;
