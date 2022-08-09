@@ -1,8 +1,12 @@
-import React from 'react';
+import { SVGAttributes } from 'react';
 
-const strokeStyle = { vectorEffect: 'non-scaling-stroke' };
+export interface IconProps extends SVGAttributes<SVGElement> {
+  className?: string;
+}
 
-const HamburgerIcon = (props) => {
+const strokeStyle: any = { vectorEffect: 'non-scaling-stroke' };
+
+const HamburgerIcon = (props: IconProps) => {
   return (
     <svg
       viewBox="0 0 25 25"

@@ -1,18 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import imageUrlBuilder from '@sanity/image-url';
-import styles from './Hero.module.css';
-import client from '../../client';
-import SimpleBlockContent from '../SimpleBlockContent';
-import Cta from '../Cta';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
-function urlFor(source) {
+import Cta from '../Cta';
+import client from '../../client';
+import styles from './Hero.module.css';
+import SimpleBlockContent from '../SimpleBlockContent';
+
+function urlFor(source: SanityImageSource) {
   return imageUrlBuilder(client).image(source);
 }
 
-const Hero = (props) => {
-  const { heading, backgroundImage, tagline, ctas } = props;
+interface HeroProps {
+  heading: string;
+  backgroundImage: SanityImageSource;
+  tagline: any[];
+  ctas: any[];
+}
 
+const Hero = ({ heading, backgroundImage, tagline, ctas }: HeroProps) => {
   const style = backgroundImage
     ? {
         backgroundImage: `url("${urlFor(backgroundImage).width(2000).auto('format').url()}")`,
@@ -34,13 +39,6 @@ const Hero = (props) => {
       </div>
     </div>
   );
-};
-
-Hero.propTypes = {
-  heading: PropTypes.string,
-  backgroundImage: PropTypes.object,
-  tagline: PropTypes.array,
-  ctas: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Hero;

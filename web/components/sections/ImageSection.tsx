@@ -1,16 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import imageUrlBuilder from '@sanity/image-url';
-import styles from './ImageSection.module.css';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+
+import Cta from '../Cta';
 import client from '../../client';
 import SimpleBlockContent from '../SimpleBlockContent';
-import Cta from '../Cta';
+import styles from './ImageSection.module.css';
 
 const builder = imageUrlBuilder(client);
 
-const ImageSection = (props) => {
-  const { heading, label, text, image, cta } = props;
+interface ImageSectionProps {
+  heading: string;
+  label: string;
+  text: any[];
+  image: SanityImageSource;
+  cta: any;
+}
 
+const ImageSection = ({ heading, label, text, image, cta }: ImageSectionProps) => {
   if (!image) {
     return null;
   }
@@ -32,20 +38,6 @@ const ImageSection = (props) => {
       </figure>
     </div>
   );
-};
-
-ImageSection.propTypes = {
-  heading: PropTypes.string,
-  label: PropTypes.string,
-  text: PropTypes.array,
-  image: PropTypes.shape({
-    asset: PropTypes.shape({
-      _ref: PropTypes.string,
-    }),
-  }),
-  backgroundImage: PropTypes.string,
-  tagline: PropTypes.string,
-  cta: PropTypes.object,
 };
 
 export default ImageSection;

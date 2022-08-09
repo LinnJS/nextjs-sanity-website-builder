@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+// @ts-ignore
 import MailchimpForm from 'react-mailchimp-form';
-import styles from './Mailchimp.module.css';
+import styles from './MailChimp.module.css';
 
-const Mailchimp = (props) => {
-  const { heading, subtitle, actionUrl } = props;
+interface MailChimpProps {
+  heading: string;
+  subtitle: string;
+  actionUrl: string;
+}
 
+const MailChimp = ({ heading, subtitle, actionUrl }: MailChimpProps) => {
   return (
     <section className={styles.root}>
       <div className={styles.container}>
@@ -54,9 +59,9 @@ const Mailchimp = (props) => {
   );
 };
 
-export default Mailchimp;
+export default MailChimp;
 
-Mailchimp.propTypes = {
+MailChimp.propTypes = {
   heading: PropTypes.string,
   subtitle: PropTypes.string,
   actionUrl: PropTypes.string,

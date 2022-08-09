@@ -1,7 +1,7 @@
 export default {
   type: 'object',
   name: 'mailchimp',
-  title: 'Mailchimp newsletter signup',
+  title: 'MailChimp newsletter signup',
   fields: [
     {
       name: 'heading',
@@ -16,9 +16,9 @@ export default {
     {
       name: 'actionUrl',
       type: 'url',
-      title: 'URL to Mailchimp signup',
+      title: 'URL to MailChimp signup',
       description:
-        'URL for the Mailchimp signup form. Remember to add your domain in your mailchimp settings to avoid CORS errors.',
+        'URL for the MailChimp signup form. Remember to add your domain in your mailchimp settings to avoid CORS errors.',
     },
   ],
   preview: {
@@ -28,7 +28,7 @@ export default {
     prepare({ title }) {
       return {
         title,
-        subtitle: 'Mailchimp newsletter signup section',
+        subtitle: 'MailChimp newsletter signup section',
       };
     },
   },
