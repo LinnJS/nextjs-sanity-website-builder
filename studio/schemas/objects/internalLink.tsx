@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-const InternalLinkRender = ({ children }) => <span>{children} 🔗</span>;
+interface InternalLinkRenderProps {
+  children: ReactNode;
+}
+
+const InternalLinkRender = ({ children }: InternalLinkRenderProps) => <span>{children} 🔗</span>;
 
 export default {
   title: 'Internal link to another document',

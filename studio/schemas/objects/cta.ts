@@ -1,8 +1,18 @@
+import { RuleType } from '../../@types';
+
+interface PrepareProps {
+  title: string;
+  routeTitle: string;
+  slug: string;
+  link: string;
+}
+
 export default {
   title: 'Call to action',
   name: 'cta',
   type: 'object',
-  validation: (Rule) => Rule.custom((fields = {}) => !fields.route || !fields.link || 'Only one link type is allowed'),
+  validation: (Rule: RuleType) =>
+    Rule.custom((fields = {}) => !fields.route || !fields.link || 'Only one link type is allowed'),
   fieldsets: [
     {
       title: 'Link',
@@ -37,7 +47,7 @@ export default {
       slug: 'route.slug.current',
       link: 'link',
     },
-    prepare({ title, routeTitle = '', slug, link }) {
+    prepare({ title, routeTitle = '', slug, link }: PrepareProps) {
       const subtitleExtra = slug ? `Slug:/${slug}/` : link ? `External link: ${link}` : 'Not set';
       return {
         title: `${title}`,

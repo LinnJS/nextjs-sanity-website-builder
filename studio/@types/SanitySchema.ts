@@ -16,7 +16,7 @@ export type RuleType = {
   max: (max: number) => RuleType;
   length: (exactLength: number) => RuleType;
   greaterThan: (gt: number) => RuleType;
-  uri: (options: { scheme: string[] }) => RuleType;
+  uri: (options: { scheme: string[]; allowRelative: boolean }) => RuleType;
   warning: (message: string) => RuleType;
   error: (message: string) => RuleType;
   unique: () => RuleType;
@@ -79,7 +79,7 @@ type FilterFunctionResult = { filter: string; filterParams?: string };
 type FilterFunction = (args: {
   document: { [key: string]: any };
   parentPath: string[];
-  parent: {}[];
+  parent: object[];
 }) => FilterFunctionResult;
 type ReferenceField = CommonFieldProps & {
   to: { type: string }[];

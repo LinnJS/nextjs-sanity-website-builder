@@ -1,9 +1,8 @@
 import React from 'react';
 
-const HTMLpreview = ({ value }) => (
-  // eslint-disable-next-line
-  <div dangerouslySetInnerHTML={{ __html: value.html }} />
-);
+const HTMLpreview = ({ value }: { value: { html: string } }) => {
+  return <div dangerouslySetInnerHTML={{ __html: value.html }} />;
+};
 
 export default {
   name: 'embedHTML',

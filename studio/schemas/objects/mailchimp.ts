@@ -1,3 +1,6 @@
+interface PrepareProps {
+  title: string;
+}
 export default {
   type: 'object',
   name: 'mailchimp',
@@ -25,7 +28,7 @@ export default {
     select: {
       title: 'heading',
     },
-    prepare({ title }) {
+    prepare({ title }: PrepareProps) {
       return {
         title,
         subtitle: 'MailChimp newsletter signup section',

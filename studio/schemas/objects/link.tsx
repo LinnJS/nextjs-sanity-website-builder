@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-const LinkRender = ({ children }) => <span>{children} 🌍</span>;
+import { RuleType } from '../../@types';
+
+interface LinkRenderProps {
+  children: ReactNode;
+}
+
+const LinkRender = ({ children }: LinkRenderProps) => <span>{children} 🌍</span>;
 
 export default {
   title: 'URL',
@@ -11,7 +17,7 @@ export default {
       title: 'URL',
       name: 'href',
       type: 'url',
-      validation: (Rule) =>
+      validation: (Rule: RuleType) =>
         Rule.uri({
           allowRelative: true,
           scheme: ['https', 'http', 'mailto', 'tel'],
