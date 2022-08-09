@@ -1,7 +1,7 @@
 // @ts-ignore
 import MailchimpForm from 'react-mailchimp-form';
 
-import styles from './MailChimp.module.css';
+import styles from './Mailchimp.module.css';
 
 interface MailChimpProps {
   heading: string;
@@ -9,7 +9,7 @@ interface MailChimpProps {
   actionUrl: string;
 }
 
-const MailChimp = ({ heading, subtitle, actionUrl }: MailChimpProps) => {
+const Mailchimp = ({ heading, subtitle, actionUrl }: MailChimpProps) => {
   return (
     <section className={styles.root}>
       <div className={styles.container}>
@@ -58,4 +58,4 @@ const MailChimp = ({ heading, subtitle, actionUrl }: MailChimpProps) => {
   );
 };
 
-export default MailChimp;
+export default Mailchimp;

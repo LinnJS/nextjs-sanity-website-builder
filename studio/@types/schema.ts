@@ -350,9 +350,9 @@ export type Mailchimp = {
   subtitle?: string;
 
   /**
-   * URL to MailChimp signup — `url`
+   * URL to Mailchimp signup — `url`
    *
-   * URL for the MailChimp signup form. Remember to add your domain in your mailchimp settings to avoid CORS errors.
+   * URL for the Mailchimp signup form. Remember to add your domain in your mailchimp settings to avoid CORS errors.
    */
   actionUrl?: string;
 };
