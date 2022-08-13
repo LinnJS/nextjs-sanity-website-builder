@@ -156,7 +156,7 @@ export const getStaticProps: GetStaticProps = async (props) => {
   }
 
   return {
-    props: data || {},
+    props: { ...data, config } || {},
   };
 };
 
@@ -172,46 +172,56 @@ interface LandingPageProps {
   config: ConfigProps;
 }
 
-const LandingPage = ({ content, openGraphImage, ...rest }: LandingPageProps) => {
+const LandingPage = ({
+  title = '',
+  description,
+  slug,
+  disallowRobots,
+  content,
+  openGraphImage,
+  config,
+  ...rest
+}: LandingPageProps) => {
+  console.log('config: ', config);
   const openGraphImages = openGraphImage
     ? [
         {
           url: builder.image(openGraphImage).width(800).height(600).url(),
           width: 800,
           height: 600,
-          alt: rest.title,
+          alt: title,
         },
         {
           // Facebook recommended size
           url: builder.image(openGraphImage).width(1200).height(630).url(),
           width: 1200,
           height: 630,
-          alt: rest.title,
+          alt: title,
         },
         {
           // Square 1:1
           url: builder.image(openGraphImage).width(600).height(600).url(),
           width: 600,
           height: 600,
-          alt: rest.title,
+          alt: title,
         },
       ]
     : [];
 
   return (
-    <>
-      {/* <NextSeo
+    <Layout config={config}>
+      <NextSeo
         title={title}
-        titleTemplate={`%s | ${config.title}`}
+        titleTemplate={`%s | ${title}`}
         description={description}
-        canonical={config.url && `${config.url}/${slug}`}
+        canonical={config?.url && `${config?.url}/${slug}`}
         openGraph={{
           images: openGraphImages,
         }}
         noindex={disallowRobots}
-      /> */}
+      />
       {content && <RenderSections sections={content} />}
-    </>
+    </Layout>
   );
 };
 
