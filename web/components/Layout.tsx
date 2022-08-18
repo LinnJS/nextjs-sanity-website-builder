@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { LogoJsonLd } from 'next-seo';
 
-import type { ConfigProps } from '../pages/_app';
+import type { ConfigProps } from '../pages/[[...slug]]';
 import Header from './Header';
 import Footer from './Footer';
 
